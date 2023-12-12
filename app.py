@@ -51,7 +51,7 @@ def main():
     # accuracy = accuracy_score(y_test, y_pred)
 
     # # Display model accuracy
-    # st.subheader("Model Accuracy:")
+    st.subheader("Make Predictions")
     # st.write(f"The model accuracy is: {accuracy:.2%}")
 
     # # Create a confusion matrix
@@ -74,21 +74,21 @@ def main():
     # st.write(f"F1 Score: {f1_score:.2%}")
 
     # User input for prediction
-    st.sidebar.subheader("Make Predictions:")
-    income = st.sidebar.slider("Income", 1, 9, 5)
-    education = st.sidebar.slider("Education", 1, 8, 4)
-    parent = st.sidebar.checkbox("Parent")
-    married = st.sidebar.checkbox("Married")
-    gender = st.sidebar.checkbox("Female")
-    age = st.sidebar.slider("Age", 18, 98, 30)
+    st.subheader("Make Predictions:")
+    income = st.slider("Income", 1, 9, 5)
+    education = st.slider("Education", 1, 8, 4)
+    parent = st.checkbox("Parent")
+    married = st.checkbox("Married")
+    gender = st.checkbox("Female")
+    age = st.slider("Age", 18, 98, 30)
 
     # Make prediction for user input
     user_input = np.array([income, education, int(parent), int(married), int(gender), age]).reshape(1, -1)
     prediction_proba = lr.predict_proba(user_input)[:, 1]
 
-    st.sidebar.subheader("Prediction Result:")
-    st.sidebar.subheader("Prediction Result:")
-    st.sidebar.write(f"Probability of being a LinkedIn user: {prediction_proba[0]:.2%}")
+    st.subheader("Prediction Result:")
+    st.subheader("Prediction Result:")
+    st.write(f"Probability of being a LinkedIn user: {prediction_proba[0]:.2%}")
 
 
 if __name__ == "__main__":
