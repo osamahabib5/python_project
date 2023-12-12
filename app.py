@@ -105,10 +105,11 @@ def main():
     prediction_proba = lr.predict_proba(user_input)[:, 1]
 
     st.subheader("Prediction Class:")
-    st.write(f"Is he a LinkedIn User (1 = Yes, 0 = No): {predicted_class[0]}")
+    st.write(f"Is the user active on LinkedIn  (1 = Yes, 0 = No): {predicted_class[0]}")
 
-    st.subheader("Prediction Result:")
-    st.write(f"Probability of being a LinkedIn user: {prediction_proba[0]:.2%}")
+    if (predicted_class[0] == 1):
+        st.subheader("Prediction Result:")
+        st.write(f"Probability of being a LinkedIn user: {prediction_proba[0]:.2%}")
 
 if __name__ == "__main__":
     main()
