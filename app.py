@@ -82,23 +82,28 @@ def main():
     age = st.slider("Age", 18, 98, 30)
 
     # Make prediction for user input
-    user_input = np.array([income, education, int(parent), int(married), int(gender), age]).reshape(1, -1)
+#     user_input = np.array([income, education, int(parent), int(married), int(gender), age]).reshape(1, -1)
     
-    # Predict class, given input features
-    predicted_class = lr.predict([user_input])
+#     # Predict class, given input features
+#     predicted_class = lr.predict([user_input])
 
-# # Generate probability of positive class (=1)
-    probs = lr.predict_proba([user_input])
+# # # Generate probability of positive class (=1)
+#     probs = lr.predict_proba([user_input])
 
-    st.subheader("Predict Class:")
-    if (predicted_class[0] == 1):
-        st.write(f"The person is a Linked User")
-    else:
-        st.write(f"The person is not a Linked User")
+#     st.subheader("Predict Class:")
+#     if (predicted_class[0] == 1):
+#         st.write(f"The person is a Linked User")
+#     else:
+#         st.write(f"The person is not a Linked User")
+
+#     st.subheader("Prediction Result:")
+#     st.write(f"Probability of being a LinkedIn user: {probs[0][1]:.2%}")
+
+    user_input = np.array([income, education, int(parent), int(married), int(gender), age]).reshape(1, -1)
+    prediction_proba = lr.predict_proba(user_input)[:, 1]
 
     st.subheader("Prediction Result:")
-    st.write(f"Probability of being a LinkedIn user: {probs[0][1]:.2%}")
-
+    st.write(f"Probability of being a LinkedIn user: {prediction_proba[0]:.2%}")
 
 if __name__ == "__main__":
     main()
