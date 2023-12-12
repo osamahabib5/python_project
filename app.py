@@ -40,11 +40,11 @@ def main():
     # Split the data into training and test sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.2, random_state=987)
 
-    # # Initialize logistic regression model
-    # lr = LogisticRegression(class_weight='balanced')
+    # Initialize logistic regression model
+    lr = LogisticRegression(class_weight='balanced')
 
-    # # Fit model to training data
-    # lr.fit(X_train, y_train)
+    # Fit model to training data
+    lr.fit(X_train, y_train)
 
     # # Evaluate the model on test data
     # y_pred = lr.predict(X_test)
