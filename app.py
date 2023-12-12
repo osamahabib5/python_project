@@ -51,7 +51,6 @@ def main():
     # accuracy = accuracy_score(y_test, y_pred)
 
     # # Display model accuracy
-    st.subheader("Make Predictions")
     # st.write(f"The model accuracy is: {accuracy:.2%}")
 
     # # Create a confusion matrix
