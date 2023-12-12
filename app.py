@@ -31,6 +31,8 @@ def main():
     # Drop missing data
     ss = ss.dropna()
 
+
+
     # Target (y) and feature(s) selection (X)
     y = ss["sm_li"]
     X = ss[["income", "education", "parent", "married", "gender", "age"]]
@@ -38,38 +40,38 @@ def main():
     # Split the data into training and test sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.2, random_state=987)
 
-    # Initialize logistic regression model
-    lr = LogisticRegression(class_weight='balanced')
+    # # Initialize logistic regression model
+    # lr = LogisticRegression(class_weight='balanced')
 
-    # Fit model to training data
-    lr.fit(X_train, y_train)
+    # # Fit model to training data
+    # lr.fit(X_train, y_train)
 
-    # Evaluate the model on test data
-    y_pred = lr.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
+    # # Evaluate the model on test data
+    # y_pred = lr.predict(X_test)
+    # accuracy = accuracy_score(y_test, y_pred)
 
-    # Display model accuracy
-    st.subheader("Model Accuracy:")
-    st.write(f"The model accuracy is: {accuracy:.2%}")
+    # # Display model accuracy
+    # st.subheader("Model Accuracy:")
+    # st.write(f"The model accuracy is: {accuracy:.2%}")
 
-    # Create a confusion matrix
-    conf_matrix = confusion_matrix(y_test, y_pred)
-    conf_matrix_df = pd.DataFrame(conf_matrix, columns=["Predicted Negative", "Predicted Positive"],
-                                  index=["Actual Negative", "Actual Positive"])
+    # # Create a confusion matrix
+    # conf_matrix = confusion_matrix(y_test, y_pred)
+    # conf_matrix_df = pd.DataFrame(conf_matrix, columns=["Predicted Negative", "Predicted Positive"],
+    #                               index=["Actual Negative", "Actual Positive"])
 
-    # Display the confusion matrix
-    st.subheader("Confusion Matrix:")
-    st.write(conf_matrix_df)
+    # # Display the confusion matrix
+    # st.subheader("Confusion Matrix:")
+    # st.write(conf_matrix_df)
 
-    # Calculate and display precision, recall, and F1 score
-    precision = conf_matrix[1, 1] / (conf_matrix[1, 1] + conf_matrix[0, 1])
-    recall = conf_matrix[1, 1] / (conf_matrix[1, 1] + conf_matrix[1, 0])
-    f1_score = 2 * (precision * recall) / (precision + recall)
+    # # Calculate and display precision, recall, and F1 score
+    # precision = conf_matrix[1, 1] / (conf_matrix[1, 1] + conf_matrix[0, 1])
+    # recall = conf_matrix[1, 1] / (conf_matrix[1, 1] + conf_matrix[1, 0])
+    # f1_score = 2 * (precision * recall) / (precision + recall)
 
-    st.subheader("Precision, Recall, and F1 Score:")
-    st.write(f"Precision: {precision:.2%}")
-    st.write(f"Recall: {recall:.2%}")
-    st.write(f"F1 Score: {f1_score:.2%}")
+    # st.subheader("Precision, Recall, and F1 Score:")
+    # st.write(f"Precision: {precision:.2%}")
+    # st.write(f"Recall: {recall:.2%}")
+    # st.write(f"F1 Score: {f1_score:.2%}")
 
     # User input for prediction
     st.sidebar.subheader("Make Predictions:")
@@ -84,6 +86,7 @@ def main():
     user_input = np.array([income, education, int(parent), int(married), int(gender), age]).reshape(1, -1)
     prediction_proba = lr.predict_proba(user_input)[:, 1]
 
+    st.sidebar.subheader("Prediction Result:")
     st.sidebar.subheader("Prediction Result:")
     st.sidebar.write(f"Probability of being a LinkedIn user: {prediction_proba[0]:.2%}")
 
