@@ -100,7 +100,12 @@ def main():
 #     st.write(f"Probability of being a LinkedIn user: {probs[0][1]:.2%}")
 
     user_input = np.array([income, education, int(parent), int(married), int(gender), age]).reshape(1, -1)
+    # Predict class, given input features
+    predicted_class = lr.predict([user_input])
     prediction_proba = lr.predict_proba(user_input)[:, 1]
+
+    st.subheader("Prediction Class:")
+    st.write(f"Is he a LinkedIn User (1 = Yes, 0 = No): {predicted_class[0]}")
 
     st.subheader("Prediction Result:")
     st.write(f"Probability of being a LinkedIn user: {prediction_proba[0]:.2%}")
