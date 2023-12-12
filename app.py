@@ -101,7 +101,7 @@ def main():
 
     user_input = np.array([income, education, int(parent), int(married), int(gender), age]).reshape(1, -1)
     # Predict class, given input features
-    predicted_class = lr.predict(user_input)[:, 1]
+    predicted_class = lr.predict(user_input)
     prediction_proba = lr.predict_proba(user_input)[:, 1]
 
     st.subheader("Prediction Class:")
