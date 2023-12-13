@@ -77,8 +77,8 @@ def main():
     income = st.slider("Income", 1, 9, 5)
     education = st.slider("Education", 1, 8, 4)
     parent = st.checkbox("Parent")
-    married = st.checkbox("Married")
-    gender = st.checkbox("Female")
+    married = st.slider("Married", 1, 5, 4)
+    gender = st.slider("Gender", 1, 3, 2)
     age = st.slider("Age", 18, 98, 30)
 
     # Make prediction for user input
