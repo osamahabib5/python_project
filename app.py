@@ -74,11 +74,11 @@ def main():
 
     # User input for prediction
     st.subheader("Make Predictions:")
-    income = st.slider("Income", 1, 9, 5)
-    education = st.slider("Education", 1, 8, 4)
+    income = st.slider("Income (low=1 to high=9)", 1, 9, 5)
+    education = st.slider("Education (low=1 to high=8)", 1, 8, 4)
     parent = st.checkbox("Parent")
-    married = st.slider("Married", 1, 5, 4)
-    gender = st.slider("Gender", 1, 3, 2)
+    married = st.slider("Marital Status (1 = Married, 2 = Living with a Partner, 3 = Divorced, 4 = Separated, 5 = Widowed)", 1, 5, 4)
+    gender = st.slider("Gender (1 = Male, 2 = Female, 3 = Other)", 1, 3, 2)
     age = st.slider("Age", 18, 98, 30)
 
     # Make prediction for user input
@@ -99,7 +99,7 @@ def main():
 #     st.subheader("Prediction Result:")
 #     st.write(f"Probability of being a LinkedIn user: {probs[0][1]:.2%}")
 
-    user_input = np.array([income, education, int(parent), int(married), int(gender), age]).reshape(1, -1)
+    user_input = np.array([income, education, int(parent),married, gender, age]).reshape(1, -1)
     # Predict class, given input features
     predicted_class = lr.predict(user_input)
     prediction_proba = lr.predict_proba(user_input)[:, 1]
