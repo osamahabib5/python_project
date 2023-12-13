@@ -73,7 +73,7 @@ def main():
     # st.write(f"F1 Score: {f1_score:.2%}")
 
     # User input for prediction
-    st.subheader("Make Predictions", style="text-align:center;")
+    st.subheader("Make Predictions")
     income = st.slider("Income (low=1 to high=9)", 1, 9, 5)
     education = st.slider("Education (low=1 to high=8)", 1, 8, 4)
     parent = st.checkbox("Parent")
